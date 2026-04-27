@@ -75,7 +75,7 @@ if [[ -n "${OPENROUTER_API_KEY:-}" ]]; then
   if [[ "$http_code" == "200" ]]; then
     say "[ ok ] OpenRouter API Key 有效"
   else
-    say "[fail] OpenRouter API Key 校验失败（HTTP $http_code）"
+    say "[fail] OpenRouter API Key 校验失败（HTTP ${http_code}）"
     failures=$((failures + 1))
   fi
 fi

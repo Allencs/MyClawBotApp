@@ -15,7 +15,7 @@ OPENCLAW_HOME="${OPENCLAW_HOME:-$HOME/.openclaw}"
 CONFIG="$OPENCLAW_HOME/openclaw.json"
 
 if [[ ! -f "$CONFIG" ]]; then
-  echo "[fail] 找不到 $CONFIG，请先 bash scripts/install.sh" >&2
+  echo "[fail] 找不到 ${CONFIG}，请先 bash scripts/install.sh" >&2
   exit 1
 fi
 
