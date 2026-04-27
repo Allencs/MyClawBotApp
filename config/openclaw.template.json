@@ -1,0 +1,79 @@
+{
+  "$schema": "https://docs.openclaw.ai/schema/openclaw.json",
+  "gateway": {
+    "host": "127.0.0.1",
+    "port": 8421
+  },
+  "providers": {
+    "entries": {
+      "openrouter": {
+        "type": "openai-completions",
+        "baseURL": "https://openrouter.ai/api/v1",
+        "apiKey": "__OPENROUTER_API_KEY__",
+        "headers": {
+          "HTTP-Referer": "https://github.com/myclawbot",
+          "X-Title": "MyClawBot Private AI Assistant"
+        },
+        "compat": {
+          "supportsDeveloperRole": false,
+          "supportsReasoningEffort": false
+        },
+        "models": {
+          "gemini-flash-lite": {
+            "id": "google/gemini-3.1-flash-lite-preview",
+            "displayName": "Gemini 3.1 Flash Lite (默认/便宜)",
+            "contextWindow": 1000000,
+            "maxOutputTokens": 8192
+          },
+          "gemini-pro": {
+            "id": "google/gemini-3.1-pro",
+            "displayName": "Gemini 3.1 Pro (强推理)",
+            "contextWindow": 1000000,
+            "maxOutputTokens": 8192
+          },
+          "claude-sonnet": {
+            "id": "anthropic/claude-4.6-sonnet",
+            "displayName": "Claude 4.6 Sonnet",
+            "contextWindow": 200000,
+            "maxOutputTokens": 8192
+          },
+          "deepseek-chat": {
+            "id": "deepseek/deepseek-chat",
+            "displayName": "DeepSeek Chat (国产平价)",
+            "contextWindow": 128000,
+            "maxOutputTokens": 8192
+          },
+          "gpt-5-mini": {
+            "id": "openai/gpt-5-mini",
+            "displayName": "GPT-5 mini",
+            "contextWindow": 200000,
+            "maxOutputTokens": 8192
+          }
+        }
+      }
+    }
+  },
+  "agent": {
+    "defaultProvider": "openrouter",
+    "defaultModel": "gemini-flash-lite",
+    "temperature": 0.6,
+    "maxTokens": 2048,
+    "systemPrompt": "你是用户的「私人 AI 管家」，运行在用户的个人微信里。\n要求：\n1. 用中文（简体）回答，语气自然、口语化、贴心，不要长篇大论。\n2. 收到含糊指令时，先用一句话确认意图再执行，避免理解偏差。\n3. 不输出 markdown 标题或大量列表（微信里渲染丑），最多用短列表。\n4. 涉及时间/日期时，主动问清楚是「今天/明天/具体日期」并确认。\n5. 暂不具备日程管理能力，如用户要求记日程、设提醒，请告知「该功能下个版本上线，已记下需求」并简要复述需求要点。"
+  },
+  "plugins": {
+    "entries": {
+      "openclaw-weixin": {
+        "enabled": true
+      }
+    }
+  },
+  "session": {
+    "dmScope": "per-account-channel-peer",
+    "historyTurns": 12,
+    "ttlSeconds": 86400
+  },
+  "logging": {
+    "level": "info",
+    "redactSecrets": true
+  }
+}

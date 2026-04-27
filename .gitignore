@@ -1,0 +1,25 @@
+# 密钥与本地环境
+.env
+.env.local
+.env.*.local
+
+# 运行时产物
+logs/
+*.log
+npm-debug.log*
+
+# 本地软链 / OpenClaw 状态目录（如做仓库内软链时）
+.openclaw/
+~/.openclaw/
+
+# 渲染后的真实配置（可能含明文 apiKey）
+config/openclaw.json
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node
+node_modules/
